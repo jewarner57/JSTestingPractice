@@ -132,6 +132,7 @@ it("Should update the count of items in the cart", function () {
 
   utils.addItemToCart(item)
   utils.addItemToCart(item2)
+  utils.addItemToCart(item2)
 
   const cartSize = utils.getNumItemsInCart()
 
@@ -157,9 +158,10 @@ it("Should return the total cost of all items in the cart", function () {
 
   utils.addItemToCart(item)
   utils.addItemToCart(item2)
+  utils.addItemToCart(item2)
 
   const cartTotal = utils.getCartCost()
 
   expect(cartTotal).to.be.a("Number")
-  expect(cartTotal).to.equal(2.98)
+  expect(cartTotal).to.equal(3.97)
 })

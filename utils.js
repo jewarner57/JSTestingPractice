@@ -28,7 +28,7 @@ const circleArea = r => {
 // defined) in order to make the tests pass.
 // ========================================================
 
-const shoppingCart = []
+let shoppingCart = []
 
 const clearCart = () => {
   shoppingCart.length = 0
@@ -45,7 +45,13 @@ const getShoppingCart = () => {
 
 const addItemToCart = (item) => {
   // should add item to shopping cart
-  shoppingCart.push(item)
+  if (shoppingCart.includes(item)) {
+    index = shoppingCart.indexOf(item)
+    shoppingCart[index].quantity = shoppingCart[index].quantity + 1
+  }
+  else {
+    shoppingCart.push(item)
+  }
 }
 
 const getNumItemsInCart = () => {
@@ -58,17 +64,22 @@ const removeItemFromCart = (item) => {
   const index = shoppingCart.indexOf(item)
 
   if (index !== -1) {
-    shoppingCart.splice(index, 1)
+    if (shoppingCart[index].quantity > 1) {
+      shoppingCart[index].quantity = shoppingCart[index].quantity - 1
+    }
+    else {
+      shoppingCart.splice(index, 1)
+    }
   }
 }
 
 const getCartCost = () => {
   let totalCost = 0
   shoppingCart.map((item, index) => {
-    totalCost += item.price
+    totalCost += item.price * item.quantity
   })
 
-  return totalCost
+  return parseFloat(totalCost.toFixed(2))
 }
 
 module.exports = {
