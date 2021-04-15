@@ -1,7 +1,7 @@
 {
   "name": "in-class-tdd",
   "version": "1.0.0",
-  "description": "",
+  "description": "tdd and bdd practice with javascript, mocha, and chai",
   "main": "index.js",
   "scripts": {
     "test": "mocha **/*.test.js",
